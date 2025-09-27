@@ -1,5 +1,18 @@
 {
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "Full-stack social media application",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm start",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
   "dependencies": {
     "mongoose": "^8.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
