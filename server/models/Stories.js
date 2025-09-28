@@ -1,29 +1,45 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+
+const viewerSchema = mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+    required: true
+  },
+  viewedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
 
 const storySchema = new mongoose.Schema({
-  userId: {
-    type: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+    required: true
   },
-  username: {
+  content: {
     type: String,
+    default: ''
   },
-  userPic: {
+  media: {
     type: String,
+    default: ''
   },
-  fileType: {
+  mediaType: {
     type: String,
+    enum: ['image', 'video', 'text'],
+    default: 'text'
   },
-  file: {
-    type: String,
-  },
-  text: {
-    type: String,
-  },
-  viewers: {
-    type: Array,
+  viewers: [viewerSchema],
+  expiresAt: {
+    type: Date,
+    default: () => new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours from creation
   }
-
 }, { timestamps: true });
 
-const Stories = mongoose.model('stories', storySchema);
-export default Stories;
+// Create index for automatic deletion
+storySchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+
+const Story = mongoose.model('stories', storySchema);
+module.exports = Story;

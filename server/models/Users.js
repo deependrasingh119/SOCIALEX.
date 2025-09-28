@@ -1,35 +1,40 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
   username: {
     type: String,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   profilePic: {
     type: String,
+    default: '',
   },
   about: {
     type: String,
+    default: '',
   },
-  posts: {
-    type: Array,
-  },
-  followers: {
-    type: Array,
-  },
-  following: {
-    type: Array,
-  },
-});
+  posts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'posts'
+  }],
+  followers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users'
+  }],
+  following: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users'
+  }],
+}, {timestamps: true});
 
 const User = mongoose.model("users", userSchema);
-export default User;
+module.exports = User;
