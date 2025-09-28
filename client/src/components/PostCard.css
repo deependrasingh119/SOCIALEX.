@@ -1,0 +1,83 @@
+.post-card {
+  border-radius: 15px !important;
+}
+
+.post-avatar, .comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.post-media img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.post-actions .btn {
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.post-actions .btn:hover {
+  background: #e9ecef;
+}
+
+.comment-item {
+  margin-bottom: 12px;
+}
+
+.comment-bubble {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.add-comment .form-control {
+  border-radius: 25px;
+  border: 2px solid #e9ecef;
+}
+
+.add-comment .form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.add-comment .btn-primary {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.likes-count, .comments-count {
+  font-size: 14px;
+}
+
+.post-stats {
+  min-height: 40px;
+}
+
+@media (max-width: 768px) {
+  .post-actions .col-4 {
+    margin-bottom: 5px;
+  }
+  
+  .post-actions .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}

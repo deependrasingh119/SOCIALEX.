@@ -1,0 +1,66 @@
+.feed-container {
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.feed-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.create-post-section .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.create-post-section .form-control {
+  background: #f8f9fa;
+  border-radius: 25px;
+  border: none;
+  padding: 12px 20px;
+}
+
+.create-post-section .form-control:hover {
+  background: #e9ecef;
+}
+
+.post-actions .btn {
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.no-posts {
+  background: white;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+.card {
+  border-radius: 15px !important;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 15px 15px 0 0 !important;
+}
+
+.suggested-users {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .feed-container {
+    padding: 10px 0;
+  }
+  
+  .create-post-section .post-actions .col-4 {
+    margin-bottom: 5px;
+  }
+}
