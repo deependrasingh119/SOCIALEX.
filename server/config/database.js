@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
     // MongoDB connection URI - will be provided by user
-    const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/socialx';
+    const mongoURI = process.env.MONGO_URL || process.env.MONGO_URI || 'mongodb://localhost:27017/socialx';
     
     const options = {
       serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds

@@ -5,6 +5,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const routes = require('./routes/Route');
 const SocketHandler = require('./SocketHandler');
+const path = require('path');
 
 // Load environment variables
 require('dotenv').config();
@@ -61,6 +62,14 @@ app.get('/api/test', (req, res) => {
 
 // API routes
 app.use('/api', routes);
+
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Catch all handler: send back React's index.html file for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 // Socket.io handling (simplified for mock database)
 io.on('connection', (socket) => {
