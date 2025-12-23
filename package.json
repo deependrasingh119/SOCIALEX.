@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "Full-stack social media application",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd server && npm start",
-    "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "start": "cd server && npm start"
+    "start": "node server/index.js",
+    "postinstall": "npm --prefix client install && npm --prefix client run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm --prefix client install && npm --prefix client run build"
   },
   "dependencies": {
     "mongoose": "^8.18.2"
